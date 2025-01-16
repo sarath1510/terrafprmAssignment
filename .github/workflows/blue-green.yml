@@ -34,18 +34,19 @@ jobs:
       # Initialize your Terraform configuration
       - name: Terraform Init
         run: terraform init
+        working-directory: ${{ env.TF_ACTION_WORKING_DIR }}
 
-      # Validate your Terraform configuration
       - name: Terraform Validate
-        run: terraform validate 
+        run: terraform validate
+        working-directory: ${{ env.TF_ACTION_WORKING_DIR }}
 
-      # Generate and display an execution plan
       - name: Terraform Plan
-        run: terraform plan 
+        run: terraform plan
+        working-directory: ${{ env.TF_ACTION_WORKING_DIR }}
 
-      # Apply the changes required to reach the desired state of the configuration
       - name: Terraform Apply
-        run: terraform apply -auto-approve 
+        run: terraform apply -auto-approve
+        working-directory: ${{ env.TF_ACTION_WORKING_DIR }}
 
       # Check the status of the Blue environment
       - name: Check status of Blue Environment
